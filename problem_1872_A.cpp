@@ -4,12 +4,13 @@ using namespace std;
 
 int main()
 {
-    int a, b, c;
+
     int t;
     cin >> t;
 
     while (t > 0)
     {
+        int a, b, c;
         int p = 1;
         int count = 0;
         cin >> a >> b >> c;
@@ -19,7 +20,6 @@ int main()
         if (a == b)
         {
             cout << 0 << endl;
-            continue;
         }
         else
         {
