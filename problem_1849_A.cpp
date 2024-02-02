@@ -6,11 +6,9 @@ int main()
     cin >> t;
     while (t-- > 0)
     {
-        long long int a, b, c;
+        int a, b, c;
         cin >> a >> b >> c;
-       // long long int d = a + b + c - 1;
-        long long int e = max(a,b);
-        long long int d = max(e,c);
+        int d = min(a-1, b+c)*2+1;
         cout << d << endl;
     }
     return 0;
