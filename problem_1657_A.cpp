@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 int main()
 {
@@ -9,10 +10,15 @@ int main()
     {
         int a, b;
         cin >> a >> b;
+        int distance = (a * a + b * b);
+        int d = (int)(sqrt(distance));
+
         if (a == 0 && b == 0)
             cout << 0 << endl;
-        else
+        else if (distance == (d * d))
             cout << 1 << endl;
+        else
+            cout << 2 << endl;
     }
-    cout << y << endl;
+    return 0;
 }
