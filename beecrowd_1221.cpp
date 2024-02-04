@@ -1,38 +1,36 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-int main()
-{
+
+int main() {
     int n;
+
     cin >> n;
-    while (n > 0)
-    {
-        long int a;
-        cin >> a;
+
+    for (int i = 0; i < n; i++) {
         int count = 0;
-        if (a < 2)
-        {
-            cout << "Not Prime" << endl;
+        long p;
+        scanf("%ld", &p);
+
+        if (p < 2) {
+            cout << "Not Prime\n";
             continue;
         }
-        if (a == 2)
-        {
-            cout << "Prime" << endl;
+
+        if (p == 2) {
+            cout << "Prime\n";
             continue;
         }
-        for (int i = 2; i <= sqrt(a) ; i++)
-        {
-            if (a % i == 0)
+
+        for (int j = 2; j < sqrt(p) + 1; j++) {
+            if (p % j == 0)
                 count++;
             if (count == 2)
                 break;
         }
 
-        if (count >= 1)
-            cout << "Not Prime" << endl;
-        else
-            cout << "Prime" << endl;
-        n--;
+        (count >= 1) ? cout << "Not Prime\n" : cout << "Prime\n";
     }
+
     return 0;
 }
