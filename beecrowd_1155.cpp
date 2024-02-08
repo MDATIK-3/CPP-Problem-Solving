@@ -7,11 +7,10 @@ using namespace std;
 
 void MUKU()
 {
-    double sum = 1;
-    for (double i = 2; i <= 40; i = i * 2)
+    double sum = 0;
+    for (int i = 1; i <= 100; i++)
     {
-
-        sum += (i - 1) / i;
+        sum += (double)(1.0 / i);
     }
     cout << fixed << setprecision(2) << sum << endl;
 }
