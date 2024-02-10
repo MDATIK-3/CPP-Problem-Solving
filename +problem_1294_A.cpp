@@ -14,7 +14,7 @@ void MUKU()
     ll max1 = max(a, b);
     ll max2 = max(max1, c);
     count = max2 - a + max2 - b + max2 - c;
-    if ((n - count) % 3 == 0 && n>count)
+    if ((n - count) % 3 == 0 && n>=count)
         yes;
     else
         no;
