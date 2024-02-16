@@ -1,15 +1,11 @@
-#include <iostream>
-#include <string>
-#include <cmath>
-#include <cstdlib>
-#include <iomanip>
-
+#include<bits/stdc++.h>
+ 
 #define ll long long int
 #define yes cout << "YES" << endl
 #define no cout << "NO" << endl
-
+ 
 using namespace std;
-
+ 
 void MUKU()
 {
     int n;
@@ -20,31 +16,29 @@ void MUKU()
         cin >> arr[i] >> brr[i];
     }
     crr[0] = max(arr[0], brr[0]);
+    bool f = true;
     for (int i = 1; i < n; i++)
     {
-        ll x = max(arr[i], brr[i]);
-        ll y = min(arr[i], brr[i]);
-        if (x <= crr[i - 1])
+        ll x = arr[i];
+        ll y = brr[i];
+        if(x<=crr[i-1] && y<=crr[i-1]) 
+            crr[i] = max(x,y);
+        else if (x <= crr[i - 1])
             crr[i] = x;
-        if (y <= crr[i - 1])
+        else if (y <= crr[i - 1])
             crr[i] = y;
-    }
-    bool flag = true;
-    for (int i = 1; i < n; i++)
-    {
-        if (crr[i - 1] < crr[i])
-        {
-            flag = false;
+        else {
+            no; f = false;
             break;
         }
     }
-    (flag) ? yes : no;
+    if(f) yes;
 }
-
+ 
 int main()
 {
-
+ 
     MUKU();
-
+ 
     return 0;
 }
