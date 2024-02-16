@@ -1,8 +1,4 @@
-#include <iostream>
-#include <string>
-#include <cmath>
-#include <cstdlib>
-#include <iomanip>
+#include<bits/stdc++.h>
 
 #define ll long long int
 #define yes cout << "YES" << endl
@@ -12,28 +8,13 @@ using namespace std;
 
 void MUKU()
 {
-    string str, str1, str2;
-    cin >> str;
-    int len = str.length();
-    str1 = str.substr(0, 1);
-
-    for (int i = 1; i < len; i++)
+     int n;
+    cin >> n;
+    ll arr[n], brr[n], crr[n];
+    for (int i = 0; i < n; i++)
     {
-        if (str[i] == '0' && str2.empty())
-        {
-            str1 += str[i];
-        }
-        else
-        {
-            str2 += str[i];
-        }
+        cin >> arr[i] >> brr[i];
     }
-    int num1 = stoi(str1);
-    int num2 = stoi(str2);
-    if (num1 < num2)
-        cout << num1 << " " << num2 << endl;
-    else
-        cout << -1 << endl;
 }
 
 int main()
