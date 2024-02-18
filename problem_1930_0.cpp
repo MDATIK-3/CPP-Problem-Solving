@@ -20,7 +20,7 @@ void MUKU()
     ll sum = 0;
     for (int i = 1; i < size; i = i + 2)
     {
-        sum += min(arr[i - 1], arr[i]);
+        sum += arr[i-1];
     }
     cout << sum << endl;
 }
