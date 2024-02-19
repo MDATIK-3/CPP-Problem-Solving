@@ -1,29 +1,33 @@
 #include <iostream>
 #include <vector>
 
+#define ll long long int
+#define yes cout << "YES" << endl
+#define no cout << "NO" << endl
+
 using namespace std;
 
-vector<int> digitSums;
-
-void RESULT(int n) {
-    digitSums.resize(n + 1, 0);
-
-    for (int i = 1; i <= n; ++i) {
-        int num = i;
-        int sum = 0;
-        while (num > 0) {
-            sum += num % 10;
-            num /= 10;
-        }
-        digitSums[i] = digitSums[i - 1] + sum;
-    }
-}
+vector<int> sum;
 
 void MUKU() {
     int n;
     cin >> n;
 
-    cout << digitSums[n] << endl;
+    cout << sum[n] << endl;
+}
+
+void RESULT(int n) {
+    sum.resize(n + 1, 0);
+
+    for (int i = 1; i <= n; ++i) {
+        int num = i;
+        int digitSum = 0;
+        while (num > 0) {
+            digitSum += num % 10;
+            num /= 10;
+        }
+        sum[i] = sum[i - 1] + digitSum;
+    }
 }
 
 int main() {
