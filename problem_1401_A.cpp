@@ -10,13 +10,11 @@ void MUKU()
 {
     ll n, k;
     cin >> n >> k;
-    if (n == k)
-        cout << 0 << endl;
-    else if(k>n)
+    if (k > n)
         cout << k - n << endl;
-        else if(k<n)
-        cout << (n-k)/2 << endl;
-          else
+    else if (n % 2 == k % 2)
+        cout << 0 << endl;
+    else
         cout << 1 << endl;
 }
 
