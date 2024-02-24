@@ -1,3 +1,4 @@
+// Muthada Chammak Challo
 #include <bits/stdc++.h>
 
 #define ll long long int
@@ -18,32 +19,32 @@ int Vowel(string str)
     return count;
 }
 */
-
+int j = 1;
 void MUKU()
 {
-    int n, k;
-    cin >> n >> k;
-    vector<ll> arr(n);
-    for (int i = 0; i < n; i++)
+    ll n, q;
+    cin >> n >> q;
+    ll arr[n], brr[n] = {0};
+    for (ll i = 1; i <= n; i++)
     {
         cin >> arr[i];
+        brr[i] = brr[i - 1] + arr[i];
     }
-    for (int i = 0; i < n; i++)
+
+    cout << "Case " << j << ":\n";
+    while (q--)
     {
-        if (k >= arr[i])
-        {
-            cout << 1;
-            k -= arr[i];
-        }
-        else
-            cout << 0;
+        ll t1, t2;
+        cin >> t1 >> t2;
+        cout << brr[t2] - brr[t1 - 1] << endl;
     }
-    cout << endl;
+    j++;
 }
 
 int main()
 {
     int t;
+
     cin >> t;
     while (t-- > 0)
     {
