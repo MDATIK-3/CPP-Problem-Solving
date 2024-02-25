@@ -25,25 +25,18 @@ using namespace std;
 
 void MUKU()
 {
-    int n, sum = 0;
+    int n, Co = 0, Ce = 0;
     cin >> n;
-    map<int, int> m;
+    vector<int> arr(n);
     for (int i = 0; i < n; i++)
     {
-        int num;
-        cin >> num;
-        m[num]++;
+        cin >> arr[i];
+        if (arr[i] % 2)
+            Co += arr[i];
+        else
+            Ce += arr[i];
     }
-
-    int max_freq = 0;
-    for (auto &p : m)
-    {
-        sum += p.second;
-        max_freq = max(max_freq, p.second);
-    }
-
-    int result = sum - max_freq;
-    cout << result << endl;
+    (Ce > Co) ? yes : no;
 }
 
 int main()

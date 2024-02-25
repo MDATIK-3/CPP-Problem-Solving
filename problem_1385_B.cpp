@@ -25,26 +25,29 @@ using namespace std;
 
 void MUKU()
 {
-    int n, sum = 0;
+    int n;
     cin >> n;
-    map<int, int> m;
-    for (int i = 0; i < n; i++)
+    vector<int> arr(2 * n);
+    vector<int> brr;
+    unordered_set<int> uniqueSet;
+
+    for (int i = 0; i < 2 * n; i++)
     {
-        int num;
-        cin >> num;
-        m[num]++;
+        cin >> arr[i];
+        if (uniqueSet.find(arr[i]) == uniqueSet.end())
+        {
+            uniqueSet.insert(arr[i]);
+            brr.push_back(arr[i]);
+        }
     }
 
-    int max_freq = 0;
-    for (auto &p : m)
+    for (int num : brr)
     {
-        sum += p.second;
-        max_freq = max(max_freq, p.second);
+        cout << num << " ";
     }
-
-    int result = sum - max_freq;
-    cout << result << endl;
+    cout << endl;
 }
+
 
 int main()
 {
