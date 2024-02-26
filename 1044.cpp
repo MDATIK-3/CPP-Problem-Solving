@@ -25,26 +25,10 @@ using namespace std;
 
 void MUKU()
 {
-    int n, C1 = 0, C0 = 0;
-    cin >> n;
-    string str;
-    cin >> str;
-    for (int i = 0; i < n; i++)
-    {
-        (str[i] == '0') ? C0++ : C1++;
-    }
-    if (C0 == n)
-        cout << 0 << endl;
-    else if (C1 == n)
-        cout << 1 << endl;
-    else if (C0 == C1)
-        cout << C1 << endl;
-    else if (C0 < C1 && C0 > 1)
-    {
-        cout << C0 + 1 << endl;
-    }
-    else if (C0 > C1 && C1 > 1)
-        cout << C1 + 1 << endl;
+    ll a, b, c, d, e;
+    cin >> a;
+    ll result = (ll)(a * a) / 2;
+    cout<<result<<endl;
 }
 
 int main()

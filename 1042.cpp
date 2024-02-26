@@ -35,16 +35,16 @@ void MUKU()
     }
     if (C0 == n)
         cout << 0 << endl;
-    else if (C1 == n)
+    else if (C1 == n || C1 == 1)
         cout << 1 << endl;
     else if (C0 == C1)
         cout << C1 << endl;
-    else if (C0 < C1 && C0 > 1)
+    else if (C0 < C1)
     {
         cout << C0 + 1 << endl;
     }
-    else if (C0 > C1 && C1 > 1)
-        cout << C1 + 1 << endl;
+    else if (C0 > C1)
+        cout << C1 << endl;
 }
 
 int main()
