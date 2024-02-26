@@ -22,22 +22,33 @@ using namespace std;
     }
     return count;
 }*/
-ll DIV(ll a, ll b)
-{
-    return (a + b - 1) / b;
-}
+
 void MUKU()
 {
     int n;
     cin >> n;
     vector<ll> arr(n);
-    ll c1 = 0, c2 = 0;
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    if (n % 2)
+    {
+        cout << "Mike" << endl;
+        return;
+    }
+    ll min = 10e9;
+    int index = 0;
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
-        (arr[i] % 2) ? c1++ : c2++;
+        if (arr[i] < min)
+        {
+            min = arr[i];
+            index = i;
+        }
     }
-    (c1 != c2) ? no : yes;
+    if (index % 2)
+        cout << "Mike" << endl;
+    else
+        cout << "Joe" << endl;
 }
 
 int main()
@@ -46,6 +57,7 @@ int main()
 
     int t;
     cin >> t;
+
     while (t-- > 0)
     {
         MUKU();

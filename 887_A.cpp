@@ -22,34 +22,52 @@ using namespace std;
     }
     return count;
 }*/
-ll DIV(ll a, ll b)
-{
-    return (a + b - 1) / b;
-}
+
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll c1 = 0, c2 = 0;
-    for (int i = 0; i < n; i++)
+    string str;
+    cin >> str;
+    int len = str.length();
+    if (len < 7)
     {
-        cin >> arr[i];
-        (arr[i] % 2) ? c1++ : c2++;
+        no;
+        return;
     }
-    (c1 != c2) ? no : yes;
+    int c1 = 0, c0 =0, p = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (str[i] == '1')
+            p++;
+       else if (str[i] == '0' && p)
+            {
+
+                c0++;
+                if (c0 >= 6)
+                    break;
+            }
+        else
+            c0 = 0;
+    }
+    for (int i = len - 7; i >= 0; i--)
+    {
+        if (str[i] == '1')
+        {
+            c1 = 1;
+            break;
+        }
+    }
+    (c0 >= 6 && c1) ? yes : no;
 }
 
 int main()
 {
     fastio();
+    /*
+        int t;
+        cin >> t;
 
-    int t;
-    cin >> t;
-    while (t-- > 0)
-    {
-        MUKU();
-    }
+        while (t-- > 0)*/
+    MUKU();
 
     return 0;
 }

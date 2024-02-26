@@ -29,15 +29,19 @@ ll DIV(ll a, ll b)
 void MUKU()
 {
     int n;
+    string str1, str2;
     cin >> n;
-    vector<ll> arr(n);
-    ll c1 = 0, c2 = 0;
+    cin >> str1 >> str2;
+    int c1 = 0, c2 = 0;
+
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
-        (arr[i] % 2) ? c1++ : c2++;
+        if (str1[i] == '1')
+            c1++;
+        if (str2[i] == '1')
+            c2++;
     }
-    (c1 != c2) ? no : yes;
+    (c1 == c2) ? yes : no;
 }
 
 int main()

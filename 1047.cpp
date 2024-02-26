@@ -28,16 +28,16 @@ ll DIV(ll a, ll b)
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll c1 = 0, c2 = 0;
-    for (int i = 0; i < n; i++)
+    string str;
+    cin >> str;
+    int count = 0;
+    int len = str.length();
+    for (int i = 0; i < len - 1; i++)
     {
-        cin >> arr[i];
-        (arr[i] % 2) ? c1++ : c2++;
+        if (str[i] == '<' && str[i + 1] == '>')
+            count++;
     }
-    (c1 != c2) ? no : yes;
+    cout<<count<<endl;
 }
 
 int main()

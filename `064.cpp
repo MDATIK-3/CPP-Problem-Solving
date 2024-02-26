@@ -28,16 +28,14 @@ ll DIV(ll a, ll b)
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll c1 = 0, c2 = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-        (arr[i] % 2) ? c1++ : c2++;
-    }
-    (c1 != c2) ? no : yes;
+    int x, y, z;
+    cin >> x >> y >> z;
+    if (y <= x)
+        cout << "PIZZA" << endl;
+    else if (z <= x)
+        cout << "BURGER" << endl;
+    else
+        cout << "NOTHING" << endl;
 }
 
 int main()

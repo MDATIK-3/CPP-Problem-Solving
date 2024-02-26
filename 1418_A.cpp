@@ -22,22 +22,17 @@ using namespace std;
     }
     return count;
 }*/
-ll DIV(ll a, ll b)
+ll ANS(ll a, ll b)
 {
     return (a + b - 1) / b;
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll c1 = 0, c2 = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-        (arr[i] % 2) ? c1++ : c2++;
-    }
-    (c1 != c2) ? no : yes;
+    ll x, y, k;
+    cin >> x >> y >> k;
+    ll result = ANS((k * y + k - 1), (x - 1));
+    result += k;
+    cout << result << endl;
 }
 
 int main()
