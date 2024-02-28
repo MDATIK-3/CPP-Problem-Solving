@@ -22,42 +22,31 @@ using namespace std;
     }
     return count;
 }*/
-
-bool primeGen(int n)
+ll DIV(ll a, ll b)
 {
-    if (n < 2)
-        return false;
-    for (int i = 2; i * i <= n; i++)
-    {
-        if (n % i == 0)
-        {
-            return false;
-        }
-    }
-    return true;
+    return (a + b - 1) / b;
 }
-
 void MUKU()
 {
-    int n, sum = 0;
+    int n;
     cin >> n;
-    map<int, int> m;
+    vector<ll> arr(n);
+    ll sum1 = 0, sum2 = 0;
     for (int i = 0; i < n; i++)
     {
-        int num;
-        cin >> num;
-        m[num]++;
+        cin >> arr[i];
     }
 
-    int max_freq = 0;
-    for (auto &p : m)
+    sort(arr.begin(), arr.end());
+    swap(arr[n - 1], arr[1]);
+    for (int i = 1; i < n; i++)
     {
-        sum += p.second;
-        max_freq = max(max_freq, p.second);
+        sum1 += arr[i - 1] + arr[i];
     }
 
-    int result = sum - max_freq;
-    cout << result << endl;
+    cout << sum1 << endl;
+
+   
 }
 
 int main()
@@ -66,7 +55,6 @@ int main()
 
     int t;
     cin >> t;
-
     while (t-- > 0)
     {
         MUKU();

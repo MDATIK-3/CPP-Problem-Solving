@@ -36,28 +36,22 @@ bool primeGen(int n)
     }
     return true;
 }
+long long min_value_of_f(int N) {
+    long long sum_of_minimums = 0;
+    int sorted_permutation[N];
+    for (int i = 0; i < N; ++i)
+        sorted_permutation[i] = i + 1;
 
+    for (int i = 0; i < N; ++i)
+        sum_of_minimums += (i % 2 == 0) ? sorted_permutation[i] : sorted_permutation[i - 1];
+
+    return sum_of_minimums;
+}
 void MUKU()
 {
     int n, sum = 0;
     cin >> n;
-    map<int, int> m;
-    for (int i = 0; i < n; i++)
-    {
-        int num;
-        cin >> num;
-        m[num]++;
-    }
-
-    int max_freq = 0;
-    for (auto &p : m)
-    {
-        sum += p.second;
-        max_freq = max(max_freq, p.second);
-    }
-
-    int result = sum - max_freq;
-    cout << result << endl;
+    cout<<min_value_of_f(n)<<endl;
 }
 
 int main()

@@ -22,42 +22,34 @@ using namespace std;
     }
     return count;
 }*/
-
-bool primeGen(int n)
+ll DIV(ll a, ll b)
 {
-    if (n < 2)
-        return false;
-    for (int i = 2; i * i <= n; i++)
-    {
-        if (n % i == 0)
-        {
-            return false;
-        }
-    }
-    return true;
+    return (a + b - 1) / b;
 }
 
+// solution start here................
 void MUKU()
 {
-    int n, sum = 0;
+    int n;
     cin >> n;
-    map<int, int> m;
+    string str;
+    cin >> str;
+    ll decimal = 0;
+    int p = 0;
+    vector<ll> arr(n);
     for (int i = 0; i < n; i++)
     {
-        int num;
-        cin >> num;
-        m[num]++;
+        arr[i] = str[i] - '0'; // restoring whole the number in int form
     }
-
-    int max_freq = 0;
-    for (auto &p : m)
+    for (int i = n - 1; i >= 0; i--)
     {
-        sum += p.second;
-        max_freq = max(max_freq, p.second);
+        if (str[i] == '1')
+        {
+            decimal += (arr[i] << p);
+        }
+        p++;
     }
-
-    int result = sum - max_freq;
-    cout << result << endl;
+    cout << decimal << endl;
 }
 
 int main()
@@ -66,7 +58,6 @@ int main()
 
     int t;
     cin >> t;
-
     while (t-- > 0)
     {
         MUKU();
