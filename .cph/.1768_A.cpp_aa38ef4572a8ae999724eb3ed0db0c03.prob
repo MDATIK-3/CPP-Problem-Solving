@@ -1,0 +1,1 @@
+{"name":"Local: 1768_A","url":"d:\\CPP\\CPP-Problem-Solving\\1768_A.cpp","tests":[{"id":1709222977228,"input":"4\n3\n6\n8\n10\n","output":"2\n5\n7\n9\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\CPP-Problem-Solving\\1768_A.cpp","group":"local","local":true}
