@@ -1,0 +1,1 @@
+{"name":"Local: 1697_B","url":"d:\\CPP\\CPP-Problem-Solving\\1697_B.cpp","tests":[{"id":1710958843785,"input":"5 3\n5 3 1 5 2\n3 2\n1 1\n5 3","output":"8\n5\n6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\CPP-Problem-Solving\\1697_B.cpp","group":"local","local":true}
