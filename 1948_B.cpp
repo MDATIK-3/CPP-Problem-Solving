@@ -22,47 +22,44 @@ using namespace std;
     }
     return count;
 }*/
-
-bool primeGen(int n)
+ll DIV(ll a, ll b)
 {
-    if (n < 2)
-        return false;
-    for (int i = 2; i * i <= n; i++)
-    {
-        if (n % i == 0)
-        {
-            return false;
-        }
-    }
-    return true;
+    return (a + b - 1) / b;
 }
-
 void MUKU()
 {
-    int n, c1 = 0, c2 = 0;
+    int n;
     cin >> n;
-    string str;
-    cin >> str;
+    vector<ll> arr(n), brr;
+    ll sum1 = 0, sum2 = 0;
     for (int i = 0; i < n; i++)
     {
-        if (str[i] == 'A')
-            c1++;
-        else
-            c2++;
+        cin >> arr[i];
     }
-    if (c1 > c2)
-        cout << "Anton" << endl;
-    else if (c2 > c1)
-        cout << "Danik" << endl;
-    else
-        cout << "Friendship" << endl;
+    brr.push_back(arr[n - 1]);
+    for (int i = n - 2; i >= 0; --i)
+    {
+        if (arr[i] > brr.back())
+        {
+            brr.push_back(arr[i] % 10);
+            brr.push_back(arr[i] / 10);
+        }
+        else
+            brr.push_back(arr[i]);
+    }
+    (is_sorted(brr.rbegin(), brr.rend())) ? yes : no;
 }
 
 int main()
 {
     fastio();
 
-    MUKU();
+    int t;
+    cin >> t;
+    while (t-- > 0)
+    {
+        MUKU();
+    }
 
     return 0;
 }
