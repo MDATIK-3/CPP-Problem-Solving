@@ -1,32 +1,71 @@
+#include <bits/stdc++.h>
+
+#define ll long long int
+#define yes cout << "YES" << endl
+#define no cout << "NO" << endl
+
+#define fastio()                      \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
+
+using namespace std;
+
+/*int Vowel(string str)
+{
+    int len = str.length();
+    int count = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
+            count++;
+    }
+    return count;
+}
+ll DIV(ll a, ll b)
+{
+    return (a + b - 1) / b;
+}*/
+
+class Solution
+{
+public:
+    int lengthOfLastWord(string str)
+    {
+        int len = str.length();
+        int max_len = 0;
+        int count = 0;
+        bool foundWord = false;
+
+        for (int i = len - 1; i >= 0; i--)
+        {
+            if (str[i] != ' ')
+            {
+                count++;
+                foundWord = true;
+            }
+            else if (foundWord)
+            {
+                break;
+            }
+        }
+        return count;
+    }
+};
+
+
 void MUKU()
 {
-    int n;
-    cin >> n;
-    string str;
-    cin >> str;
-    ll decimal = 0;
-    int p = 0;
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if (str[i] == '1')
-        {
-            decimal += pow(2, p);
-        }
-        p++;
-    }
-    cout << decimal << endl;
+   cout<<"print safety"<<endl;
 }
 
 int main()
 {
     fastio();
 
-    int t;
-    cin >> t;
-    while (t-- > 0)
-    {
+
         MUKU();
-    }
+    
 
     return 0;
 }
