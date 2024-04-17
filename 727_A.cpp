@@ -30,37 +30,51 @@ ll DIV(ll a, ll b)
 
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
-    for (int i = 0; i < n; i++)
+    ll a, b;
+    cin >> a >> b;
+    vector<ll> result;
+    while (b > a)
     {
-        cin >> arr[i];
+        if (b % 2 == 0)
+        {
+            result.push_back(b);
+            b /= 2;
+        }
+        else if (b % 10 == 1)
+        {
+            result.push_back(b);
+            b /= 10;
+        }
+        else
+        {
+            no;
+            return;
+        }
     }
-
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
+    result.push_back(a);
+    reverse(result.begin(), result.end());
+    if (b == a)
     {
-        sum1 += arr[i - 1] + arr[i];
+
+        yes;
+        cout << result.size() << endl;
+        for (ll x : result)
+        {
+            cout << x << " ";
+        }
+        cout << endl;
     }
-
-    cout << sum1 << endl;
-
-   
+    else
+    {
+        no;
+    }
 }
 
 int main()
 {
     fastio();
 
-    int t;
-    cin >> t;
-    while (t-- > 0)
-    {
-        MUKU();
-    }
+    MUKU();
 
     return 0;
 }

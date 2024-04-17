@@ -48,6 +48,7 @@ int main() {
     vector<bool> visited(n + 1, false);
 
     cout << "DFS traversal: ";
+    // Call the DFS function starting from each unvisited node
     for (int i = 1; i <= n; i++) {
         if (!visited[i]) {
             dfs(g, i, visited);
