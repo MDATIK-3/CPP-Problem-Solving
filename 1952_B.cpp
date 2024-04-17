@@ -1,60 +1,70 @@
-#include <bits/stdc++.h>
-
-#define ll long long int
-#define yes cout << "YES" << endl
-#define no cout << "NO" << endl
-
-#define fastio()                      \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);                    \
-    cout.tie(NULL)
+#include <iostream>
+#include <vector>
+#include <unordered_map>
 
 using namespace std;
 
-/*int Vowel(string str)
-{
-    int len = str.length();
-    int count = 0;
-    for (int i = 0; i < len; i++)
-    {
-        if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
-            count++;
-    }
-    return count;
-}
-ll DIV(ll a, ll b)
-{
-    return (a + b - 1) / b;
-}*/
-
-void MUKU()
-{
-    yes;
-    // string str;
-    // cin >> str;
-    // int len = str.length();
-    // bool flag = false;
-    // for (int i = 1; i < len; i++)
-    // {
-    //     if (str[i - 1] == 'i' && str[i] == 't')
-    //     {
-    //         flag = true;
-    //         break;
-    //     }
-    // }
-    // (flag) ? yes : no;
-}
-
-int main()
-{
-    fastio();
-
+void muku() {
     int t;
     cin >> t;
-    while (t-- > 0)
-    {
-        MUKU();
-    }
 
+    while (t--) {
+        int n, m, k;
+        cin >> n >> m >> k;
+
+        vector<int> arr1(n);
+        for (int i = 0; i < n; ++i)
+            cin >> arr1[i];
+
+        unordered_map<int, int> freqMap1;
+        vector<int> arr2(m);
+        for (int i = 0; i < m; ++i) {
+            cin >> arr2[i];
+            freqMap1[arr2[i]]++;
+        }
+
+        unordered_map<int, int> freqMap2;
+        int ans = 0;
+        for (int i = 0; i < m; ++i)
+            freqMap2[arr1[i]]++;
+
+        int cur = 0;
+        for (auto it : freqMap2) {
+            int val = it.first;
+            if (freqMap1.find(val) != freqMap1.end()) {
+                cur += min(freqMap2[val], freqMap1[val]);
+            }
+        }
+        if (cur >= k) {
+            ans++;
+        }
+
+        if (n == m) {
+            cout << ans << endl;
+            continue;
+        }
+
+        for (int i = 0; i < n - m; ++i) {
+            if (arr1[i] != arr1[i + m]) {
+                cur -= min(freqMap2[arr1[i]], freqMap1[arr1[i]]);
+                cur -= min(freqMap2[arr1[i + m]], freqMap1[arr1[i + m]]);
+
+                freqMap2[arr1[i]]--;
+                freqMap2[arr1[i + m]]++;
+
+                cur += min(freqMap2[arr1[i]], freqMap1[arr1[i]]);
+                cur += min(freqMap2[arr1[i + m]], freqMap1[arr1[i + m]]);
+            }
+            if (cur >= k) {
+                ans++;
+            }
+        }
+
+        cout << ans << endl;
+    }
+}
+
+int main() {
+    muku();
     return 0;
 }

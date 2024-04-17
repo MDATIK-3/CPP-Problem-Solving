@@ -6,6 +6,30 @@
 
 using namespace std;
 
+class Solution
+{
+public:
+    int maxDepth(string str)
+    {
+        int count = 0;
+        int maximum = 0;
+        int len = str.length();
+        for (int i = 0; i < len; i++)
+        {
+            if (str[i] == '(')
+            {
+                count++;
+                maximum = max(maximum, count);
+            }
+            else if (str[i] == ')')
+            {
+                count--;
+            }
+        }
+        return maximum;
+    }
+};
+
 void MUKU()
 {
     ll a, b;
