@@ -53,7 +53,6 @@ ll factorial(int n)
     return res;
 }
 
-
 vector<int> isPrime(int n)
 {
     vector<int> primes;
@@ -94,27 +93,62 @@ vector<int> computePrefixSum(const vector<int> &nums)
 
     return prefixSum;
 }
+int count_trailing_zeros(int num)
+{
+    if (num == 0)
+        return 32;
+    int count = 0;
+    while ((num & 1) == 0)
+    {
+        count++;
+        num >>= 1;
+    }
+    return count;
+}
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
 
 void MUKU()
 {
     int n;
     cin >> n;
-    vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
-    for (int i = 0; i < n; i++)
-    {
+    vector<int> arr(n);
+    
+    for(int i = 0; i < n; ++i) 
         cin >> arr[i];
+    
+    int p = 1;
+    
+    for(auto &x : arr){
+        int d = gcd(p, x);
+        d = x / d;
+        p *= d;
     }
-
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
-    {
-        sum1 += arr[i - 1] + arr[i];
+    
+    int s = 0;
+    vector<int> b;
+    
+    for(auto &x : arr){
+        s += p / x;
+        b.push_back(p / x);
     }
-
-    cout << sum1 << endl;
+    
+    if(s >= p){
+        cout << -1 << endl;
+    } else {
+        for(auto &x : b){
+            cout << x << " ";
+        }
+        cout << endl;
+    }
 }
+
 
 int main()
 {

@@ -53,7 +53,6 @@ ll factorial(int n)
     return res;
 }
 
-
 vector<int> isPrime(int n)
 {
     vector<int> primes;
@@ -94,26 +93,73 @@ vector<int> computePrefixSum(const vector<int> &nums)
 
     return prefixSum;
 }
+class Solution
+{
+public:
+    string reverseStr(string s, int k)
+    {
+        int n = s.length();
+        string str = "";
+
+        int i = 0, j = 0;
+        if (n < k)
+        {
+            for (int p = n - 1; p >= 0; p--)
+            {
+                str += s[p];
+            }
+            return str;
+        }
+        while (i < n)
+        {
+            if (j % 2 == 0)
+            {
+                for (int p = i + k - 1; p >= i; p--)
+                {
+                    if (p < n)
+                        str += s[p];
+                }
+            }
+            else
+            {
+                for (int p = i; p <= k + i - 1; p++)
+                    if (p < n)
+                        str += s[p];
+            }
+            i += k;
+            j++;
+        }
+        return str;
+    }
+};
+class Solution
+{
+public:
+    int numMatchingSubseq(string s, vector<string> &words)
+    {
+        int sl = 0, tl = 0, count=0;
+        int s_l2 = s.length(), t_l2 = words.size();
+        while (t_l2 > tl)
+        {
+            while (s_l2 > sl)
+            {
+                if (s[sl] == t[tl])
+                {
+                    sl++;
+                }
+                tl++;
+            }
+        }
+        return (s_l2 - tl == 0);
+    }
+};
 
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
-
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
-    {
-        sum1 += arr[i - 1] + arr[i];
-    }
-
-    cout << sum1 << endl;
+    int s;
+    cin >> s;
+    int init = ceil(sqrt(s));
+    cout << init << endl;
 }
 
 int main()

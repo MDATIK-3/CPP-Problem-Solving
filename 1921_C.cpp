@@ -52,68 +52,18 @@ ll factorial(int n)
     }
     return res;
 }
-
-
-vector<int> isPrime(int n)
-{
-    vector<int> primes;
-    vector<bool> is_prime(n + 1, true);
-    is_prime[0] = is_prime[1] = false;
-
-    for (int i = 2; i * i <= n; i++)
-    {
-        if (is_prime[i])
-        {
-            for (int j = i * i; j <= n; j += i)
-            {
-                is_prime[j] = false;
-            }
-        }
-    }
-
-    for (int i = 2; i <= n; i++)
-    {
-        if (is_prime[i])
-        {
-            primes.push_back(i);
-        }
-    }
-
-    return primes;
-}
-
-vector<int> computePrefixSum(const vector<int> &nums)
-{
-    int n = nums.size();
-    vector<int> prefixSum(n + 1, 0);
-
-    for (int i = 1; i <= n; ++i)
-    {
-        prefixSum[i] = prefixSum[i - 1] + nums[i - 1];
-    }
-
-    return prefixSum;
-}
-
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
+    ll n, f, a, b, m;
+    cin >> n >> f >> a >> b;
+    ll need = 0, pre = 0;
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
+        cin >> m;
+        need += min(((m - pre) * a), b);
+        pre = m;
     }
-
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
-    {
-        sum1 += arr[i - 1] + arr[i];
-    }
-
-    cout << sum1 << endl;
+    (need < f) ? yes : no;
 }
 
 int main()

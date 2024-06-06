@@ -8,9 +8,26 @@ using namespace std;
     cin.tie(NULL);                    \
     cout.tie(NULL)
 
+
+
 void MUKU()
 {
-    
+    string s;
+    cin >> s;
+    int n = s.size();
+    int count = 1;
+    int t = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (s[i] == s[i - 1])
+            continue;
+        else
+            count++;
+        if (s[i - 1] == '0' && s[i] == '1')
+            t = 1;
+    }
+    int result = count - t;
+    cout << result << endl;
 }
 
 int main()
