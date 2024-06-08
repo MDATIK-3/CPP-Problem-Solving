@@ -53,7 +53,6 @@ ll factorial(int n)
     return res;
 }
 
-
 vector<int> isPrime(int n)
 {
     vector<int> primes;
@@ -131,6 +130,150 @@ void before_dfs()
 
     cout << sol << endl;
 }
+class Solution
+{
+public:
+    int minimumDifference(vector<int> &arr, int k)
+    {
+        if (k == 1)
+            return 0;
+
+        int n = arr.size();
+        sort(arr.begin(), arr.end());
+
+        int minDiff = INT_MAX;
+
+        for (int i = 0; i <= n - k; i++)
+        {
+            int diff = arr[i + k - 1] - arr[i];
+            minDiff = min(minDiff, diff);
+        }
+
+        return minDiff;
+    }
+};
+class Solution
+{
+public:
+    int arrayPairSum(vector<int> &arr)
+    {
+        int n = arr.size();
+        sort(arr.begin(), arr.end());
+        int sum = 0;
+        for (int i = 0; i < n - 1; i += 2)
+            sum += min(arr[i], arr[i + 1]);
+        return sum;
+    }
+};
+class Solution
+{
+public:
+    bool canThreePartsEqualSum(vector<int> &arr)
+    {
+        int n = arr.size();
+
+        int l = 0, r = n - 1, left_sum = arr[l++], right_sum = arr[r--], sum = 0, avg = 0;
+        for (int it : arr)
+            sum += it;
+        avg = sum / 3;
+        if (sum % 3)
+            return false;
+        while (l < r)
+        {
+            if (left_sum < avg)
+                left_sum += arr[l++];
+            if (right_sum < avg && l < r)
+                right_sum += arr[r--];
+            if (l <= r && left_sum == avg && right_sum == avg)
+                return true;
+        }
+        return false;
+    }
+};
+class Solution
+{
+public:
+    int pivotIndex(vector<int> &arr)
+    {
+        int right = 0, left = 0;
+        for (int it : arr)
+            right += it;
+        for (int i = 0; i < arr.size(); i++)
+        {
+            right -= arr[i];
+            if (right == left)
+                return i;
+            left += arr[i];
+        }
+        return -1;
+    }
+};
+class Solution
+{
+public:
+    int subarraySum(vector<int> &nums, int k)
+    {
+        int sum = 0;
+        int count = 0;
+        unordered_map<int, int> mp;
+        mp[0] = 1;
+        int n = nums.size();
+        for (int i = 0; i < n; i++)
+        {
+            sum += nums[i];
+            count += mp[sum - k];
+            mp[sum]++;
+        }
+        return count;
+    }
+};
+class Solution
+{
+public:
+    int minimumCost(vector<int> &arr)
+    {
+        int n = arr.size();
+        sort(arr.begin(), arr.end());
+        int sum = 0;
+
+        if (n <= 2)
+        {
+            return accumulate(arr.begin(), arr.end(), 0);
+        }
+
+        for (int i = n - 1; i >= 0; i -= 3)
+        {
+            sum += arr[i];
+            if (i - 1 >= 0)
+            {
+                sum += arr[i - 1];
+            }
+        }
+
+        return sum;
+    }
+};
+class Solution
+{
+public:
+    vector<vector<int>> minimumAbsDifference(vector<int> &arr)
+    {
+        int n = arr.size();
+        int result = INT_MAX;
+        sort(arr.begin(), arr.end());
+        for (int i = 0; i < n - 1; i++)
+        {
+            result = min(result,(arr[i + 1] - arr[i]));
+        }
+        vector<vector<int>> brr;
+        for (int i = 1; i < n; i++)
+        {
+            if (arr[i] - arr[i - 1] == result)
+                brr.push_back({arr[i - 1], arr[i]});
+        }
+        return brr;
+    }
+};
 void MUKU()
 {
     int n;

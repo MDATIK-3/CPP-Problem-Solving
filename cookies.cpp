@@ -53,7 +53,6 @@ ll factorial(int n)
     return res;
 }
 
-
 vector<int> isPrime(int n)
 {
     vector<int> primes;
@@ -94,74 +93,47 @@ vector<int> computePrefixSum(const vector<int> &nums)
 
     return prefixSum;
 }
-
-const int MAXN = 110;
-bool visited[MAXN];
-vector<int> adj[MAXN];
-void dfs(int v)
+int count_trailing_zeros(int num)
 {
-    visited[v] = true;
-    for (int i = 0; i < adj[v].size(); i++)
+    if (num == 0)
+        return 32;
+    int count = 0;
+    while ((num & 1) == 0)
     {
-        int w = adj[v][i];
-        if (!visited[w])
-            dfs(w);
+        count++;
+        num >>= 1;
     }
+    return count;
+}
+int gcd(int a, int b)
+{
+    while (b != 0)
+    {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
 }
 
-void before_dfs()
-{
-    int n, m, x, y, sol;
-    cin >> n >> m;
-    for (int i = 0; i < m; i++)
-    {
-        cin >> x >> y;
-        adj[x].push_back(y);
-        adj[y].push_back(x);
-    }
-
-    for (int i = 1; i <= n; i++)
-    {
-        if (!visited[i])
-        {
-            dfs(i);
-            sol++;
-        }
-    }
-
-    cout << sol << endl;
-}
 void MUKU()
 {
-    int n;
+    int n, odd = 0, even = 0;
     cin >> n;
-    vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
-    for (int i = 0; i < n; i++)
+    vector<int> arr(n);
+
+    for (int i = 0; i < n; ++i)
     {
         cin >> arr[i];
+        (arr[i] % 2) ? odd++ : even++;
     }
 
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
-    {
-        sum1 += arr[i - 1] + arr[i];
-    }
-
-    cout << sum1 << endl;
+    cout << (odd % 2 == 1 ? odd : even) << endl;
 }
 
 int main()
 {
     fastio();
-
-    int t;
-    cin >> t;
-    while (t-- > 0)
-    {
-        MUKU();
-    }
-
+    MUKU();
     return 0;
 }
