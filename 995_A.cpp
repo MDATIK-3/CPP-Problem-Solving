@@ -147,23 +147,10 @@ void before_dfs()
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
-
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
-    {
-        sum1 += arr[i - 1] + arr[i];
-    }
-
-    cout << sum1 << endl;
+    string str1, str2;
+    cin >> str1 >> str2;
+    swap(str1[0], str2[0]);
+    cout << str1 << " " << str2<<endl;
 }
 
 int main()

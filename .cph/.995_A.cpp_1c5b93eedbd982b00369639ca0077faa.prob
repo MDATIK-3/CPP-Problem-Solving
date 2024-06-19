@@ -1,0 +1,1 @@
+{"name":"Local: 995_A","url":"d:\\CPP\\CPP-Problem-Solving\\995_A.cpp","tests":[{"id":1718163473462,"input":"6\nbit set\ncat dog\nhot dog\nuwu owo\ncat cat\nzzz zzz\n","output":"sit bet\ndat cog\ndot hog\nowu uwo\ncat cat\nzzz zzz\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\CPP-Problem-Solving\\995_A.cpp","group":"local","local":true}

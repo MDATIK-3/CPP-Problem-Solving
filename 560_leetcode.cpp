@@ -263,7 +263,7 @@ public:
         sort(arr.begin(), arr.end());
         for (int i = 0; i < n - 1; i++)
         {
-            result = min(result,(arr[i + 1] - arr[i]));
+            result = min(result, (arr[i + 1] - arr[i]));
         }
         vector<vector<int>> brr;
         for (int i = 1; i < n; i++)
@@ -274,6 +274,353 @@ public:
         return brr;
     }
 };
+class Solution
+{
+public:
+    int minimizeMax(vector<int> &arr, int p)
+    {
+
+        int n = arr.size();
+        if (n == 1)
+            return 0;
+        sort(arr.begin(), arr.end());
+        int low = 0;
+        int ans = INT_MAX;
+        int high = arr[n - 1] - arr[0];
+        while (low <= high)
+        {
+            int mid = low + (high - low) / 2;
+            int count = 0;
+            int i = 1;
+            while (i < n)
+            {
+                if (arr[i] - arr[i - 1] <= mid)
+                {
+                    count++;
+                    i += 2;
+                }
+                else
+                    i++;
+            }
+            if (count >= p)
+            {
+                ans = mid;
+                high = mid - 1;
+            }
+            else
+                low = mid + 1;
+        }
+        return ans;
+    }
+};
+class Solution
+{
+public:
+    vector<int> leftRightDifference(vector<int> &arr)
+    {
+        int n = arr.size();
+        if (n == 1)
+            return {0};
+        vector<int> result(n, 0);
+        vector<int> left(n, 0);
+        vector<int> right(n, 0);
+        for (int i = 1; i < n; i++)
+        {
+            left[i] = left[i - 1] + arr[i - 1];
+        }
+        for (int i = n - 2; i >= 0; i--)
+        {
+            right[i] = right[i + 1] + arr[i + 1];
+        }
+        for (int i = 0; i < n; i++)
+        {
+            result[i] = abs(left[i] - right[i]);
+        }
+        return result;
+    }
+};
+class Solution
+{
+public:
+    vector<int> distinctDifferenceArray(vector<int> &arr)
+    {
+        int n = arr.size();
+        unordered_set<int> st;
+        vector<int> prefix(n);
+        vector<int> suffix(n);
+        for (int i = 0; i < n; i++)
+        {
+            st.insert(arr[i]);
+            prefix[i] = st.size();
+        }
+        st.clear();
+        for (int i = n - 1; i >= 0; i--)
+        {
+            suffix[i] = st.size();
+            st.insert(arr[i]);
+        }
+        vector<int> result(n);
+        for (int i = 0; i < n; i++)
+        {
+            result[i] = prefix[i] - suffix[i];
+        }
+        return result;
+    }
+};
+class Solution
+{
+public:
+    int lengthOfLIS(vector<int> &nums)
+    {
+        vector<int> result;
+        for (int it : nums)
+        {
+            int n = result.size() - 1;
+            if (result.empty() || result[n] < it)
+            {
+                result.push_back(it);
+            }
+            else
+            {
+                auto x = lower_bound(result.begin(), result.end(), it);
+                *x = it;
+            }
+        }
+        return result.size();
+    }
+};
+class Solution
+{
+public:
+    bool increasingTriplet(vector<int> &nums)
+    {
+        vector<int> result;
+        for (int it : nums)
+        {
+            int n = result.size();
+            if (result.empty() || result[n - 1] < it)
+            {
+                result.push_back(it);
+            }
+            else
+            {
+                auto pos = lower_bound(result.begin(), result.end(), it);
+                *pos = it;
+            }
+        }
+        return result.size() == 3;
+    }
+};
+class Solution
+{
+public:
+    int heightChecker(vector<int> &arr)
+    {
+        int n = arr.size();
+        vector<int> brr(n);
+        copy(arr.begin(), arr.end(), brr.begin());
+        sort(arr.begin(), arr.end());
+        int count = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (arr[i] != brr[i])
+                count++;
+        }
+        return count;
+    }
+};
+class Solution
+{
+public:
+    string firstPalindrome(vector<string> &arr)
+    {
+        int n = arr.size();
+        for (int i = 0; i < n; i++)
+        {
+            bool flag = true;
+            int t = arr[i].length();
+            for (int j = 0; j < t / 2; j++)
+            {
+                if (arr[i][j] != arr[i][t - j - 1])
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+                return arr[i];
+        }
+        return "";
+    }
+};
+class Solution
+{
+public:
+    bool isPalindrome(string data)
+    {
+        int n = data.size();
+        string str = "";
+        transform(data.begin(), data.end(), data.begin(),
+                  [](unsigned char c)
+                  { return tolower(c); });
+        for (char c : data)
+        {
+            if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
+            {
+                str += c;
+            }
+        }
+        int t = str.length();
+        for (int j = 0; j < t / 2; j++)
+        {
+            if (str[j] != str[t - j - 1])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+class Solution
+{
+public:
+    bool MUKU(string str, int left, int right)
+    {
+        while (left < right)
+        {
+            if (str[left] != str[right])
+                return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+    bool validPalindrome(string str)
+    {
+        int t = str.length();
+        int left = 0;
+        int right = t - 1;
+        while (left < right)
+        {
+            if (str[left] != str[right])
+            {
+                return MUKU(str, left + 1, right) || MUKU(str, left, right + 1);
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+};
+class Solution
+{
+public:
+    vector<int> relativeSortArray(vector<int> &arr, vector<int> &brr)
+    {
+        int n = arr.size();
+        int m = brr.size();
+        unordered_map<int, int> mp;
+        for (int i = 0; i < n; i++)
+        {
+            mp[arr[i]]++;
+        }
+
+        vector<int> result;
+        for (int i = 0; i < m; i++)
+        {
+            while (mp[brr[i]]--)
+            {
+                result.push_back(brr[i]);
+            }
+            mp.erase(brr[i]);
+        }
+
+        for (int i = 0; i <= 1000; i++)
+        {
+            while (mp[i]--)
+            {
+                result.push_back(i);
+            }
+        }
+
+        return result;
+    }
+};
+class Solution
+{
+public:
+    void sortColors(vector<int> &nums)
+    {
+        int i = 0, mid = 0, k = nums.size() - 1;
+        while (mid <= k)
+        {
+            if (nums[mid] == 0)
+            {
+                swap(nums[i], nums[mid]);
+                i++, mid++;
+            }
+            else if (nums[mid] == 1)
+            {
+                mid++;
+            }
+            else
+            {
+                swap(nums[mid], nums[k]);
+                k--;
+            }
+        }
+    }
+};
+class Solution {
+public:
+    bool judgeSquareSum(int c) {
+        long long int l=0; 
+        long long int r = sqrt(c);
+        while(l<=r){
+            long long int sum = l*l+ r*r;
+            if(sum==c)return true;
+            else{
+                (sum>c)?r--:l++;
+            }
+        }
+        return false;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void MUKU()
 {
     int n;

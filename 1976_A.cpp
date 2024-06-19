@@ -52,7 +52,17 @@ ll factorial(int n)
     }
     return res;
 }
-
+long long mod_pow(long long base, long long exp, long long mod) {
+    long long result = 1;
+    while (exp > 0) {
+        if (exp % 2 == 1) {
+            result = (result * base) % mod;
+        }
+        base = (base * base) % mod;
+        exp /= 2;
+    }
+    return result;
+}
 vector<int> isPrime(int n)
 {
     vector<int> primes;
@@ -79,21 +89,6 @@ vector<int> isPrime(int n)
     }
 
     return primes;
-}
-
-long long mod_pow(long long base, long long exp, long long mod)
-{
-    long long result = 1;
-    while (exp > 0)
-    {
-        if (exp % 2 == 1)
-        {
-            result = (result * base) % mod;
-        }
-        base = (base * base) % mod;
-        exp /= 2;
-    }
-    return result;
 }
 
 vector<int> computePrefixSum(const vector<int> &nums)
@@ -149,21 +144,25 @@ void MUKU()
 {
     int n;
     cin >> n;
-    vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
-    for (int i = 0; i < n; i++)
+    string str;
+    cin >> str;
+    for (int i = 0; i < n - 1; i++)
     {
-        cin >> arr[i];
+        if (!isalpha(str[i]))
+        {
+            if (isdigit(str[i] - '0'))
+            {
+                no;
+                return;
+            }
+        }
+        if (str[i] > str[i + 1])
+        {
+            no;
+            return;
+        }
     }
-
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
-    {
-        sum1 += arr[i - 1] + arr[i];
-    }
-
-    cout << sum1 << endl;
+    yes;
 }
 
 int main()

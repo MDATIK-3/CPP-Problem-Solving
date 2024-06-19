@@ -147,23 +147,34 @@ void before_dfs()
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
+    ll n, c;
+    cin >> n >> c;
     vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
     }
+    arr[0] += c;
+    vector<ll> brr;
 
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
+    ll max_A = *max_element(arr.begin(), arr.end());
+    auto max_it = max_element(arr.begin(), arr.end());
+    ll index = distance(arr.begin(), max_it);
+
+    ll cum = 0;
+    for (int i = 0; i < n; i++)
     {
-        sum1 += arr[i - 1] + arr[i];
+        cum += arr[i];
+        if (i == index)
+        {
+            cout << 0 << " ";
+        }
+        else
+        {
+            cout << ((cum >= max_A) ? i : i + 1) << " ";
+        }
     }
-
-    cout << sum1 << endl;
+    cout << endl;
 }
 
 int main()
@@ -172,7 +183,7 @@ int main()
 
     int t;
     cin >> t;
-    while (t-- > 0)
+    while (t--)
     {
         MUKU();
     }

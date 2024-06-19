@@ -52,7 +52,20 @@ ll factorial(int n)
     }
     return res;
 }
-
+long long mod_pow(long long base, long long exp, long long mod)
+{
+    long long result = 1;
+    while (exp > 0)
+    {
+        if (exp % 2 == 1)
+        {
+            result = (result * base) % mod;
+        }
+        base = (base * base) % mod;
+        exp /= 2;
+    }
+    return result;
+}
 vector<int> isPrime(int n)
 {
     vector<int> primes;
@@ -79,21 +92,6 @@ vector<int> isPrime(int n)
     }
 
     return primes;
-}
-
-long long mod_pow(long long base, long long exp, long long mod)
-{
-    long long result = 1;
-    while (exp > 0)
-    {
-        if (exp % 2 == 1)
-        {
-            result = (result * base) % mod;
-        }
-        base = (base * base) % mod;
-        exp /= 2;
-    }
-    return result;
 }
 
 vector<int> computePrefixSum(const vector<int> &nums)
@@ -147,23 +145,54 @@ void before_dfs()
 }
 void MUKU()
 {
+    long long h;
     int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
-    for (int i = 0; i < n; i++)
+    cin >> h >> n;
+
+    vector<int> dmg(n), cd(n);
+    for (int i = 0; i < n; ++i)
     {
-        cin >> arr[i];
+        cin >> dmg[i];
+    }
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> cd[i];
     }
 
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
+    priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<pair<long long, int>>> pq;
+    long long total = 0;
+
+    for (int i = 0; i < n; ++i)
     {
-        sum1 += arr[i - 1] + arr[i];
+        pq.push({0, i});
+        total += dmg[i];
     }
 
-    cout << sum1 << endl;
+    long long curr = 0;
+    while (h > 0)
+    {
+        long long dtt = 0;
+
+        while (!pq.empty() && pq.top().first == curr)
+        {
+            int a_index = pq.top().second;
+            pq.pop();
+            dtt += dmg[a_index];
+            pq.push({curr + cd[a_index], a_index});
+        }
+
+        if (dtt == 0)
+        {
+            curr = pq.top().first;
+        }
+        else
+        {
+            h -= dtt;
+            curr++;
+        }
+    }
+
+    cout << curr << "\n";
 }
 
 int main()

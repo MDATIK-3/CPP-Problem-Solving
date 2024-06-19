@@ -149,21 +149,18 @@ void MUKU()
 {
     int n;
     cin >> n;
+    ll count = 0, sum = 0;
     vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
+    unordered_set<ll> st;
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
+        sum += arr[i];
+        st.insert(arr[i]);
+        if (!(sum % 2) && st.count(sum / 2))
+            count++;
     }
-
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
-    {
-        sum1 += arr[i - 1] + arr[i];
-    }
-
-    cout << sum1 << endl;
+    cout << count << endl;
 }
 
 int main()

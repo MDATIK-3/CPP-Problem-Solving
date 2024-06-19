@@ -147,23 +147,27 @@ void before_dfs()
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<ll> arr(n);
-    ll sum1 = 0, sum2 = 0;
+    int n, m;
+    cin >> n >> m;
+    vector<int> row, col;
+
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
+        string str;
+        cin >> str;
+        for (int j = 0; j < m; j++)
+        {
+            if (str[j] == '#')
+            {
+                row.push_back(i + 1);
+                col.push_back(j + 1);
+            }
+        }
     }
-
-    sort(arr.begin(), arr.end());
-    swap(arr[n - 1], arr[1]);
-    for (int i = 1; i < n; i++)
-    {
-        sum1 += arr[i - 1] + arr[i];
-    }
-
-    cout << sum1 << endl;
+    //median point is the manhattan circle centered(N)
+    sort(row.begin(), row.end());
+    sort(col.begin(), col.end());
+    cout << row[row.size() / 2] << " " << col[col.size() / 2] << endl;
 }
 
 int main()
