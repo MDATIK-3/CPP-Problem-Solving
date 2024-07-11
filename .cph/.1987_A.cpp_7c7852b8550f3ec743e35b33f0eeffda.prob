@@ -1,0 +1,1 @@
+{"name":"Local: 1987_A","url":"d:\\CPP\\CPP-Problem-Solving\\1987_A.cpp","tests":[{"id":1719759595835,"input":"6\n5 1\n2 2\n2 3\n1 7\n11 5\n100 100\n","output":"5\n3\n4\n1\n51\n9901\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\CPP-Problem-Solving\\1987_A.cpp","group":"local","local":true}

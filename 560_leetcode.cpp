@@ -571,55 +571,176 @@ public:
         }
     }
 };
-class Solution {
+class Solution
+{
 public:
-    bool judgeSquareSum(int c) {
-        long long int l=0; 
+    bool judgeSquareSum(int c)
+    {
+        long long int l = 0;
         long long int r = sqrt(c);
-        while(l<=r){
-            long long int sum = l*l+ r*r;
-            if(sum==c)return true;
-            else{
-                (sum>c)?r--:l++;
+        while (l <= r)
+        {
+            long long int sum = l * l + r * r;
+            if (sum == c)
+                return true;
+            else
+            {
+                (sum > c) ? r-- : l++;
             }
         }
         return false;
     }
 };
+class Solution
+{
+public:
+    int countGoodTriplets(vector<int> &arr, int a, int b, int c)
+    {
+        int n = arr.size();
+        int count = 0;
+        for (int i = 0; i < n - 2; i++)
+        {
+            for (int j = i + 1; j < n - 1; ++j)
+            {
+                for (int k = j + 1; k < n; ++k)
+                {
+                    if ((abs(arr[i] - arr[j]) <= a) && (abs(arr[j] - arr[k]) <= b) && (abs(arr[i] - arr[k]) <= c))
+                        count++;
+                }
+            }
+        }
 
+        return count;
+    }
+};
+class Solution
+{
+public:
+    int countTriples(int n)
+    {
+        int count = 0;
+        for (int i = 1; i < n; i++)
+        {
+            for (int j = i; j <= n; ++j)
+            {
+                int kSquare = i * i + j * j;
+                int k = static_cast<int>(sqrt(kSquare));
+                if (k * k == kSquare && k <= n)
+                {
+                    count++;
+                }
+            }
+        }
 
+        return count;
+    }
+};
+class Solution
+{
+public:
+    int missingNumber(vector<int> &arr)
+    {
+        unordered_map<int, int> mp;
+        int n = arr.size();
+        for (int i = 0; i < n; i++)
+        {
+            mp[arr[i]]++;
+        }
+        for (int i = 0; i <= n; i++)
+        {
+            if (mp.find(i) == mp.end())
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+};
+class Solution
+{
+public:
+    int missingNumber(vector<int> &arr)
+    {
+        int n = arr.size();
+        int sum = (n * (n - 1)) / 2;
+        int res = 0;
+        for (int i = 0; i < n; i++)
+        {
+            res += arr[i];
+        }
+        return sum - res;
+    }
+};
 
+class Solution
+{
+public:
+    int singleNumber(vector<int> &arr)
+    {
+        unordered_map<int, int> mp;
+        for (int i = 0; i < arr.size(); i++)
+        {
+            mp[arr[i]]++;
+        }
+        for (auto it = mp.begin(); it != mp.end(); it++)
+        {
+            if (it->second == 1)
+            {
+                return it->first;
+            }
+        }
+        return -1;
+    }
+};
+class Solution
+{
+public:
+    int findDuplicate(vector<int> &arr)
+    {
+        unordered_map<int, int> mp;
+        for (int i = 0; i < arr.size(); i++)
+        {
+            mp[arr[i]]++;
+        }
+        for (auto it = mp.begin(); it != mp.end(); it++)
+        {
+            if (it->second == 2)
+            {
+                return it->first;
+            }
+        }
+        return -1;
+    }
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class Solution
+{
+public:
+    vector<int> findErrorNums(vector<int> &arr)
+    {
+        unordered_map<int, int> mp;
+        vector<int> brr(2);
+        for (int i = 0; i < arr.size(); i++)
+        {
+            mp[arr[i]]++;
+        }
+        for (auto it = mp.begin(); it != mp.end(); it++)
+        {
+            if (it->second == 2)
+            {
+                brr.push_back(it->first);
+            }
+        }
+        for (int i = 0; i <= n; i++)
+        {
+            if (mp.find(i) == mp.end())
+            {
+                brr.push_back(i);
+            }
+        }
+        return brr;
+    }
+};
 
 void MUKU()
 {

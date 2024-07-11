@@ -1,0 +1,1 @@
+{"name":"Local: 1989_C","url":"d:\\CPP\\CPP-Problem-Solving\\1989_C.cpp","tests":[{"id":1719500844395,"input":"4\n2\n-1 1\n-1 -1\n1\n-1\n-1\n5\n0 -1 1 0 1\n-1 1 0 0 1\n4\n-1 -1 -1 1\n-1 1 1 1\n","output":"0\n-1\n1\n1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\CPP-Problem-Solving\\1989_C.cpp","group":"local","local":true}
