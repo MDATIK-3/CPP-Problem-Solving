@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 
 #define ll long long int
-#define yes cout << "YES" << endl
-#define no cout << "NO" << endl
+#define yes cout << "Yes" << endl
+#define no cout << "No" << endl
 
 #define fastio()                      \
     ios_base::sync_with_stdio(false); \
@@ -147,17 +147,35 @@ void before_dfs()
 }
 void MUKU()
 {
-    int n;
+    int n, cnt0 = 0, cnt1 = 0;
     cin >> n;
-    vector<int> a(n);
-    int res = 0;
+    string str;
+    cin >> str;
+
+    vector<int> arr;
+    char temp = '1';
+
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        if (str[i] == '0' && temp == '1')
+        {
+            arr.push_back(0);
+        }
+        else if (str[i] == '1')
+        {
+            arr.push_back(1);
+        }
+        temp = str[i];
     }
-    cout << res << endl;
+
+    int m = arr.size();
+
+    for (int i = 0; i < m; i++)
+    {
+        (arr[i] == 0) ? cnt0++ : cnt1++;
+    }
+
+    (cnt0 < cnt1) ? yes : no;
 }
 
 int main()
@@ -166,7 +184,7 @@ int main()
 
     int t;
     cin >> t;
-    while (t-- > 0)
+    while (t--)
     {
         MUKU();
     }

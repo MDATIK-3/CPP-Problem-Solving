@@ -145,19 +145,61 @@ void before_dfs()
 
     cout << sol << endl;
 }
+const int MAX_N = 1e5 + 5;
+
+vector<int> adj[MAX_N];
+int G[MAX_N];
+int subtree_gcd[MAX_N];
+
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+void dfs3(int u, int parent)
+{
+    subtree_gcd[u] = u;
+    G[u] = -1;
+
+    for (int v : adj[u])
+    {
+        if (v != parent)
+        {
+            dfs3(v, u);
+            if (v < u)
+            {
+                G[u] = max(G[u], gcd(u, subtree_gcd[v]));
+            }
+            subtree_gcd[u] = gcd(subtree_gcd[u], subtree_gcd[v]);
+        }
+    }
+}
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+    int N, R;
+    cin >> N >> R;
+
+    for (int i = 1; i <= N; i++)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        adj[i].clear();
     }
-    cout << res << endl;
+
+    for (int i = 0; i < N - 1; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    dfs3(R, 0);
+
+    for (int i = 1; i <= N; i++)
+    {
+        cout << G[i] << " ";
+    }
+    cout << "\n";
 }
 
 int main()
@@ -166,7 +208,7 @@ int main()
 
     int t;
     cin >> t;
-    while (t-- > 0)
+    while (t--)
     {
         MUKU();
     }

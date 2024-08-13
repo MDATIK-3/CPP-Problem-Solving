@@ -96,7 +96,7 @@ long long mod_pow(long long base, long long exp, long long mod)
     return result;
 }
 
-vector<int> computePrefixSum(const vector<int> &nums)
+vector<int> PrefixSum(const vector<int> &nums)
 {
     int n = nums.size();
     vector<int> prefixSum(n + 1, 0);
@@ -145,31 +145,45 @@ void before_dfs()
 
     cout << sol << endl;
 }
+int solve(const string &a, const string &b)
+{
+    int temp = 0;
+    for (int i = 0; i < a.size(); ++i)
+    {
+        if (a[i] != b[i])
+        {
+            ++temp;
+        }
+    }
+    return temp;
+}
+
 void MUKU()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    int res = 0;
+    vector<int> arr(n), brr(n);
+
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        cin >> arr[i];
     }
-    cout << res << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> brr[i];
+    }
+
+    bool flag = (arr == brr) || (reverse(brr.begin(), brr.end()), arr == brr);
+    cout << (flag ? "Bob" : "Alice") << endl;
 }
 
 int main()
 {
     fastio();
-
     int t;
     cin >> t;
-    while (t-- > 0)
-    {
+    while (t--)
         MUKU();
-    }
 
     return 0;
 }

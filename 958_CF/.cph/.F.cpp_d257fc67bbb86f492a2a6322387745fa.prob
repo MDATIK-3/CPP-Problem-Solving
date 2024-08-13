@@ -1,0 +1,1 @@
+{"name":"Local: F","url":"d:\\CPP\\CPP-Problem-Solving\\958_CF\\F.cpp","tests":[{"id":1721057141480,"input":"3\n1 1 1\n1 1 1\n1 1 1\n","output":"1 2 6 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\CPP-Problem-Solving\\958_CF\\F.cpp","group":"local","local":true}

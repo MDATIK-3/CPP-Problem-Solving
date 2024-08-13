@@ -147,17 +147,34 @@ void before_dfs()
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+    int n, k;
+    cin >> n >> k;
+    if (n == 1)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        cout << 0 << endl;
+        return;
     }
-    cout << res << endl;
+
+    int sum = 0;
+    while (n > 1)
+    {
+        if (n <= k)
+        {
+            sum++;
+            break;
+        }
+        int temp = n / k;
+        n -= temp * k;
+        n += temp;
+        sum += temp;
+
+        if (n > 1 && n < k)
+        {
+            sum++;
+            break;
+        }
+    }
+    cout << sum << endl;
 }
 
 int main()
@@ -166,7 +183,7 @@ int main()
 
     int t;
     cin >> t;
-    while (t-- > 0)
+    while (t--)
     {
         MUKU();
     }

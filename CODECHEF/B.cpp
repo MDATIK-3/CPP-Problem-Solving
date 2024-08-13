@@ -96,7 +96,7 @@ long long mod_pow(long long base, long long exp, long long mod)
     return result;
 }
 
-vector<int> computePrefixSum(const vector<int> &nums)
+vector<int> PrefixSum(const vector<int> &nums)
 {
     int n = nums.size();
     vector<int> prefixSum(n + 1, 0);
@@ -145,31 +145,56 @@ void before_dfs()
 
     cout << sol << endl;
 }
+int solve(const string &a, const string &b)
+{
+    int temp = 0;
+    for (int i = 0; i < a.size(); ++i)
+    {
+        if (a[i] != b[i])
+        {
+            ++temp;
+        }
+    }
+    return temp;
+}
+
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
-    }
-    cout << res << endl;
+     int n;
+        cin >> n;
+        vector<int> a(n), b(n);
+        vector<int> pos_in_b(n + 1);
+
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+
+        for (int i = 0; i < n; i++) {
+            cin >> b[i];
+            pos_in_b[b[i]] = i;
+        }
+
+        int min_pos_in_b = n;
+        bool alice_wins = false;
+        for (int i = 0; i < n; i++) {
+            if (pos_in_b[a[i]] < min_pos_in_b) {
+                min_pos_in_b = pos_in_b[a[i]];
+            } else {
+                alice_wins = true;
+                break;
+            }
+        }
+
+        cout << (alice_wins ? "Alice" : "Bob") << endl;
 }
 
 int main()
 {
     fastio();
-
     int t;
     cin >> t;
-    while (t-- > 0)
-    {
+    while (t--)
         MUKU();
-    }
 
     return 0;
 }

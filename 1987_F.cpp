@@ -16,7 +16,7 @@ int maxOperations(vector<int>& a, int n) {
     return operations;
 }
 
-void solve() {
+void MUKU() {
     int n;
     cin >> n;
     vector<int> a(n);
@@ -34,7 +34,7 @@ int main() {
     int t;
     cin >> t;
     while (t--) {
-        solve();
+        MUKU();
     }
 
     return 0;

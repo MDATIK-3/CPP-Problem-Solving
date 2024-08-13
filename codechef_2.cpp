@@ -18,36 +18,57 @@ int Vowel(string str)
     return count;
 }
 */
+class Solution
+{
+public:
+    int minChanges(int n, int k)
+    {
+        if ((n & k) != k)
+            return -1;
 
+        int res = 0;
+        while (n > 0 && k != n)
+        {
+            if ((n & 1) == 1)
+            {
+                if ((k & 1) == 0)
+                    res++;
+            }
+            k >>= 1;
+            n >>= 1;
+        }
+        return res;
+    }
+};
 void MUKU()
 {
-    int n;
-    cin >> n;
+    int a, b, c, d;
     string str;
     cin >> str;
-    int count = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u')
-            count = 0;
-        else
-            count++;
-        if (count == 4)
-            break;
-    }
-    if (count == 4)
-        no;
+    // cin >> a;
+    cin >> a >> b >> c >> d;
+    a = a * b * c;
+    b = pow(d, 3);
+    // cout << (a - b) * c << endl;
+    // d = max(a, b);
+    // d = (c, d);
+    // (d > a + b + c - d) ? yes : no;
+    // cout << ((a*100> b*10) ? "Cloth" : "Disposable") << endl;
+    // ((a + b) >= d || (a + c) >= d || (b + c) >= d) ? yes : no;
+    if (a > b)
+        cout << "Cuboid" << endl;
+    else if (a < b)
+        cout << "Cube" << endl;
     else
-        yes;
+        cout << "Equal" << endl;
 }
 
 int main()
 {
     int t;
     cin >> t;
-    while (t-- > 0)
-    {
+    while (t--)
         MUKU();
-    }
+
     return 0;
 }

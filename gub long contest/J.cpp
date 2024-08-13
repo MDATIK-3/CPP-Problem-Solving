@@ -149,27 +149,40 @@ void MUKU()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    int res = 0;
+    vector<int> arr(n);
+    int c1 = 0, c2 = 0;
+
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        cin >> arr[i];
     }
-    cout << res << endl;
+    if (n == 2)
+    {
+        cout << abs(arr[0] - arr[1]) << endl;
+        return;
+    }
+
+    int p = 0;
+    int sum = abs(arr[1] - arr[0]);
+
+    for (int i = 2; i < n; i++)
+    {
+        int temp = min(sum + abs(arr[i] - arr[i - 1]), p + abs(arr[i] - arr[i - 2]));
+        p = sum;
+        sum = temp;
+    }
+
+    cout << sum << endl;
 }
 
 int main()
 {
     fastio();
 
-    int t;
-    cin >> t;
-    while (t-- > 0)
-    {
-        MUKU();
-    }
+    // int t;
+    // cin >> t;
+    // while (t--)
+    MUKU();
 
     return 0;
 }

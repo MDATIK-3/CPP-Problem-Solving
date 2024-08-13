@@ -81,6 +81,19 @@ vector<int> isPrime(int n)
     return primes;
 }
 
+int init(int a)
+{
+    int b = log2(a) / log2(3);
+    b++;
+    return 2 * b;
+}
+
+pair<int, int> init2(int b)
+{
+    int d = log2(b) / log2(3);
+    int e = pow(3, d);
+    return {d, e};
+}
 long long mod_pow(long long base, long long exp, long long mod)
 {
     long long result = 1;
@@ -145,19 +158,30 @@ void before_dfs()
 
     cout << sol << endl;
 }
+
+int cal(int p, int q)
+{
+    int c = 0;
+    while (q > p)
+    {
+        auto [d, e] = init2(q);
+
+        int f = q - max(e, p + 1);
+        c += ((d + 1) * (f + 1));
+        q = e - 1;
+    }
+    return c;
+}
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
-    }
-    cout << res << endl;
+    int a, b;
+    cin >> a >> b;
+
+    int c = init(a);
+    int d = cal(a, b);
+
+    int rs = c + d;
+    cout << rs << endl;
 }
 
 int main()
@@ -166,7 +190,7 @@ int main()
 
     int t;
     cin >> t;
-    while (t-- > 0)
+    while (t--)
     {
         MUKU();
     }

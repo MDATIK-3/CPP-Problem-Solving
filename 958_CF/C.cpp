@@ -2,7 +2,7 @@
 
 #define ll long long int
 #define yes cout << "YES" << endl
-#define no cout << "NO" << endl
+#define no cout << "No" << endl
 
 #define fastio()                      \
     ios_base::sync_with_stdio(false); \
@@ -145,19 +145,22 @@ void before_dfs()
 
     cout << sol << endl;
 }
+
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+    int n, m, p, q;
+    cin >> n >> m >> p >> q;
+
+    if (n * 2 + m == p * 2 + q)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        cout << "Equal" << endl;
     }
-    cout << res << endl;
+    else if (n * 2 + m > p * 2 + q)
+    {
+        cout << "Messi" << endl;
+    }
+    else
+        cout << "Ronaldo" << endl;
 }
 
 int main()
@@ -166,7 +169,7 @@ int main()
 
     int t;
     cin >> t;
-    while (t-- > 0)
+    while (t--)
     {
         MUKU();
     }

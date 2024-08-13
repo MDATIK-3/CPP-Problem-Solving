@@ -147,29 +147,25 @@ void before_dfs()
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+    string str;
+    cin >> str;
+    set<char> arr;
+
+    for (char c : str)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        arr.insert(c);
     }
-    cout << res << endl;
+    cout << ((arr.size() % 2) ? "IGNORE HIM!" : "CHAT WITH HER!") << endl;
 }
 
 int main()
 {
     fastio();
 
-    int t;
-    cin >> t;
-    while (t-- > 0)
-    {
-        MUKU();
-    }
+    // int t;
+    // cin >> t;
+    // while (t--)
+    MUKU();
 
     return 0;
 }

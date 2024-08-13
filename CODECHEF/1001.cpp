@@ -5,7 +5,7 @@
 #define no cout << "NO" << endl
 
 using namespace std;
-/*
+
 int Vowel(string str)
 {
     int len = str.length();
@@ -17,7 +17,7 @@ int Vowel(string str)
     }
     return count;
 }
-*/
+
 class Solution
 {
 public:
@@ -42,21 +42,9 @@ public:
 };
 void MUKU()
 {
-    double a, b, c, d;
-    // cin >> a;
-    cin >> a >> b;
-    // cout << a / 4 + (a % 4) / 2 << endl;
-    // (a / b > 10 || (a/b==10 && a%b>=1)) ? yes : no;
-    // ((a + b) >= d || (a + c) >= d || (b + c) >= d) ? yes : no;
-    if ((int(a) % 5) != 0)
-        cout << b << endl;
-    // else if (a > b)
-    //     cout << "FIRST" << endl;
-    else
-    {
-        c = b - a - .5;
-        printf("%.2f", c);
-    }
+    string str;
+    cin >> str;
+    (str.size() >= 3 && str[0] == '1' && str[1] == '0' && (str[2] >= '2' || (str.size() >= 4 && str[2] >= '1'))) ? yes : no;
 }
 
 int main()

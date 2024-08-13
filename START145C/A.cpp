@@ -149,15 +149,21 @@ void MUKU()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    int res = 0;
+    vector<ll> arr(n);
+    ll sum1 = 0, sum2 = 0;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        cin >> arr[i];
     }
-    cout << res << endl;
+
+    sort(arr.begin(), arr.end());
+    swap(arr[n - 1], arr[1]);
+    for (int i = 1; i < n; i++)
+    {
+        sum1 += arr[i - 1] + arr[i];
+    }
+
+    cout << sum1 << endl;
 }
 
 int main()

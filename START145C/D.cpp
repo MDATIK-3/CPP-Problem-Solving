@@ -147,17 +147,17 @@ void before_dfs()
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+    int N;
+    cin >> N;
+    long long result = 0;
+    for (int i = 1; i < N; ++i)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        long long term = 1LL * (i * i) % MOD;
+        term = (term * (1LL << (N - i - 1))) % MOD;
+
+        result = (result + term) % MOD;
     }
-    cout << res << endl;
+    cout << result << endl;
 }
 
 int main()

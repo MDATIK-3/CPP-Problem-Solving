@@ -147,17 +147,29 @@ void before_dfs()
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
+    string str;
+    cin >> str;
+    int n = str.length();
+
+    vector<int> arr(2, 0);
+
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        arr[str[i] - '0']++;
     }
-    cout << res << endl;
+
+    for (int i = 0; i <= n; i++)
+    {
+        if (i == n || arr[1 - (str[i] - '0')] == 0)
+        {
+            cout << n - i << endl;
+            break;
+        }
+        else
+        {
+            arr[1 - (str[i] - '0')]--;
+        }
+    }
 }
 
 int main()
@@ -166,7 +178,7 @@ int main()
 
     int t;
     cin >> t;
-    while (t-- > 0)
+    while (t--)
     {
         MUKU();
     }

@@ -147,17 +147,23 @@ void before_dfs()
 }
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+    string str1, str2;
+    cin >> str1 >> str2;
+    ll count = 0;
+
+    int n = str1.length();
+    int m = str2.length();
+
+    ll p = str1.find(str2);
+    ll k = string::npos;
+    
+    while (p != k)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        count++;
+        p = str1.find(str2, p + 1);
     }
-    cout << res << endl;
+
+    cout << count << endl;
 }
 
 int main()
@@ -166,10 +172,11 @@ int main()
 
     int t;
     cin >> t;
-    while (t-- > 0)
+    int n = 1;
+    while (t--)
     {
+        cout << "Case " << n++ << ": ";
         MUKU();
     }
-
     return 0;
 }

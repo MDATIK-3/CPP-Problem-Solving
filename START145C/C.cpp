@@ -145,21 +145,34 @@ void before_dfs()
 
     cout << sol << endl;
 }
-void MUKU()
+int p(char c)
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
-    }
-    cout << res << endl;
+    return c - '0';
 }
 
+int muku2(int arr, int brr, int crr)
+{
+    return min(arr, 2 - brr - crr);
+}
+
+int muk(int arr, char brr, char crr)
+{
+    int l = p(brr);
+    int k = p(crr);
+    return muku2(arr, l, k);
+}
+
+void MUKU()
+{
+    int arr;
+    cin >> arr;
+
+    string brr;
+    cin >> brr;
+
+    int result = muk(arr, brr[0], brr[arr - 1]);
+    cout << result << endl;
+}
 int main()
 {
     fastio();

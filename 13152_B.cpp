@@ -145,31 +145,78 @@ void before_dfs()
 
     cout << sol << endl;
 }
-void MUKU()
+
+void muku1(vector<vector<char>> &arr, int a)
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < a; ++i)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+
+        for (int j = 0; j < a; ++j)
+        {
+            cin >> arr[i][j];
+        }
     }
-    cout << res << endl;
+}
+
+bool muku2(const vector<vector<int>> &arr, const vector<vector<int>> &brr, int a, int b)
+{
+    for (int i = 0; i < a; ++i)
+    {
+        int crr_sum = 0;
+        for (int j = 0; j < b; ++j)
+        {
+            crr_sum += (arr[i][j] - brr[i][j] + 3) % 3;
+        }
+        if (crr_sum % 3 != 0)
+        {
+            return false;
+        }
+    }
+
+    for (int j = 0; j < b; ++j)
+    {
+        int testcases_sum = 0;
+        for (int i = 0; i < a; ++i)
+        {
+            testcases_sum += (arr[i][j] - brr[i][j] + 3) % 3;
+        }
+        if (testcases_sum % 3 != 0)
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+void muku()
+{
+    int n, k;
+    cin >> n >> k;
+
+    vector<vector<char>> arr(n, vector<char>(n));
+    muku1(arr, n);
+
+    for (int i = 0; i < n; i += k)
+    {
+        for (int j = 0; j < n; j += k)
+        {
+            cout << arr[i][j];
+        }
+        cout << "\n";
+    }
 }
 
 int main()
 {
-    fastio();
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int t;
     cin >> t;
-    while (t-- > 0)
-    {
-        MUKU();
-    }
 
+    while (t--)
+    {
+        muku();
+    }
     return 0;
 }

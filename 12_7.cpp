@@ -149,15 +149,13 @@ void MUKU()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+
+    for (int i = 1; i <= n - 2; i++)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        cout << i << " " << i << endl;
     }
-    cout << res << endl;
+    cout << n - 1 << " " << n << endl;
+    cout << n << " " << n << endl;
 }
 
 int main()
@@ -166,7 +164,7 @@ int main()
 
     int t;
     cin >> t;
-    while (t-- > 0)
+    while (t--)
     {
         MUKU();
     }

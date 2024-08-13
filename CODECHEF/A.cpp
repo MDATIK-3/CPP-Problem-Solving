@@ -6,41 +6,11 @@
 
 #define fastio()                      \
     ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);                    \
-    cout.tie(NULL)
+    cin.tie(nullptr);                 \
+    cout.tie(nullptr)
 
 using namespace std;
 
-///////////////////////////////////////////////////////
-//                                                   //
-//  Nickname: Atik                                   //
-//  University: Green University of Bangladesh       //
-//  Country: Bangladesh                              //
-//  City: Narayanganj                                //
-//  CodeForces: codeforces.com/profile/md.atik       //
-//                                                   //
-//  Language: C++                                    //
-//  Compiler: gnu g++                                //
-//  Editor: VS Code                                  //
-//                                                   //
-///////////////////////////////////////////////////////
-
-/*int Vowel(string str)
-{
-    int len = str.length();
-    int count = 0;
-    for (int i = 0; i < len; i++)
-    {
-        if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
-            count++;
-    }
-    return count;
-}
-
-ll DIV(ll a, ll b)
-{
-    return (a + b - 1) / b;
-}*/
 const int MOD = 1e9 + 7;
 
 ll factorial(int n)
@@ -59,7 +29,7 @@ vector<int> isPrime(int n)
     vector<bool> is_prime(n + 1, true);
     is_prime[0] = is_prime[1] = false;
 
-    for (int i = 2; i * i <= n; i++)
+    for (int i = 2; i * i <= n; ++i)
     {
         if (is_prime[i])
         {
@@ -70,7 +40,7 @@ vector<int> isPrime(int n)
         }
     }
 
-    for (int i = 2; i <= n; i++)
+    for (int i = 2; i <= n; ++i)
     {
         if (is_prime[i])
         {
@@ -96,7 +66,7 @@ long long mod_pow(long long base, long long exp, long long mod)
     return result;
 }
 
-vector<int> computePrefixSum(const vector<int> &nums)
+vector<int> PrefixSum(const vector<int> &nums)
 {
     int n = nums.size();
     vector<int> prefixSum(n + 1, 0);
@@ -112,64 +82,109 @@ vector<int> computePrefixSum(const vector<int> &nums)
 const int MAXN = 110;
 bool visited[MAXN];
 vector<int> adj[MAXN];
+
 void dfs(int v)
 {
     visited[v] = true;
-    for (int i = 0; i < adj[v].size(); i++)
+    for (int w : adj[v])
     {
-        int w = adj[v][i];
         if (!visited[w])
+        {
             dfs(w);
+        }
+    }
+}
+vector<ll> arr, brr;
+void init(int x)
+{
+    arr.resize(x + 1);
+    brr.resize(x + 1);
+    arr[0] = 1;
+    for (int i = 1; i <= x; i++)
+    {
+        arr[i] = (arr[i - 1] * i) % MOD;
     }
 }
 
 void before_dfs()
 {
-    int n, m, x, y, sol;
+    int n, m, x, y, sol = 0;
     cin >> n >> m;
-    for (int i = 0; i < m; i++)
+
+    for (int i = 0; i < m; ++i)
     {
         cin >> x >> y;
         adj[x].push_back(y);
         adj[y].push_back(x);
     }
 
-    for (int i = 1; i <= n; i++)
+    fill(begin(visited), end(visited), false);
+
+    for (int i = 1; i <= n; ++i)
     {
         if (!visited[i])
         {
             dfs(i);
-            sol++;
+            ++sol;
         }
     }
 
     cout << sol << endl;
 }
+const int MAX_N = 200000;
+
+void init2(int num)
+{
+    brr[num] = mod_pow(arr[num], MOD - 2, MOD);
+    for (int i = num - 1; i >= 0; --i)
+    {
+        brr[i] = (brr[i + 1] * (i + 1)) % MOD;
+    }
+}
+
+long long cal(int n, int k)
+{
+    return (k > n) ? 0 : (arr[n] * brr[k] % MOD * brr[n - k] % MOD);
+}
+
 void MUKU()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    int res = 0;
+
+    vector<int> arr(n);
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        cin >> arr[i];
     }
-    cout << res << endl;
+
+    set<int> st;
+    bool flag = true;
+
+    for (int i = 0; i < n; i++)
+    {
+        int q = arr[i];
+
+        flag = (i == 0) ? (st.insert(q), true)
+                        : (st.count(q - 1) == 0 && st.count(q + 1) == 0 ? false
+                                                                        : (st.insert(q), true));
+
+        if (!flag)
+            break;
+    }
+
+    (flag) ? yes : no;
 }
 
 int main()
 {
     fastio();
+  
 
     int t;
     cin >> t;
-    while (t-- > 0)
-    {
+    while (t--)
         MUKU();
-    }
 
     return 0;
 }

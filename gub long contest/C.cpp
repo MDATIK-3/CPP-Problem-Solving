@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 
 #define ll long long int
-#define yes cout << "YES" << endl
-#define no cout << "NO" << endl
+#define yes cout << "yes" << endl
+#define no cout << "no" << endl
 
 #define fastio()                      \
     ios_base::sync_with_stdio(false); \
@@ -112,6 +112,8 @@ vector<int> computePrefixSum(const vector<int> &nums)
 const int MAXN = 110;
 bool visited[MAXN];
 vector<int> adj[MAXN];
+stack<int> topostk;
+
 void dfs(int v)
 {
     visited[v] = true;
@@ -121,55 +123,48 @@ void dfs(int v)
         if (!visited[w])
             dfs(w);
     }
+    topostk.push(v);
 }
 
-void before_dfs()
+void topoSort(int n)
 {
-    int n, m, x, y, sol;
-    cin >> n >> m;
-    for (int i = 0; i < m; i++)
+    vector<int> result;
+
+    while (!topostk.empty())
     {
-        cin >> x >> y;
-        adj[x].push_back(y);
-        adj[y].push_back(x);
+        result.push_back(topostk.top());
+        topostk.pop();
     }
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < result.size(); ++i)
     {
-        if (!visited[i])
-        {
-            dfs(i);
-            sol++;
-        }
+        if (i > 0)
+            cout << " ";
+        cout << result[i];
     }
-
-    cout << sol << endl;
+    cout << endl;
 }
+
 void MUKU()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+    while (1)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        ll n, temp;
+        cin >> n;
+        if (n < 1)
+            return;
+        temp = sqrt(n);
+        (n == temp * temp) ? yes : no;
     }
-    cout << res << endl;
 }
 
 int main()
 {
     fastio();
 
-    int t;
-    cin >> t;
-    while (t-- > 0)
-    {
-        MUKU();
-    }
-
+    // int t;
+    // cin >> t;
+    // while (1)
+    MUKU();
     return 0;
 }

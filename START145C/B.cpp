@@ -149,15 +149,30 @@ void MUKU()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
+    vector<int> arr(n);
+    for (int &temp : arr)
     {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
+        cin >> temp;
     }
-    cout << res << endl;
+
+    set<int> brr(arr.begin(), arr.end());
+
+    if (brr.size() == 2)
+    {
+        auto it = brr.begin();
+        int first = *it;
+        ++it;
+        int second = *it;
+        (first == 0 || second == 0) ? yes : no;
+    }
+    else if (brr.size() == 1)
+    {
+        yes;
+    }
+    else
+    {
+        no;
+    }
 }
 
 int main()

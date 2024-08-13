@@ -17,7 +17,7 @@ vector<vector<ll>> transpose(const vector<vector<ll>>& mat) {
     return t;
 }
 
-void solve() {
+void MUKU() {
     ll n, m;
     cin >> n >> m;
 
@@ -108,7 +108,7 @@ int main() {
     int t = 1;
     cin >> t;
     while (t--) {
-        solve();
+        MUKU();
     }
 
     return 0;

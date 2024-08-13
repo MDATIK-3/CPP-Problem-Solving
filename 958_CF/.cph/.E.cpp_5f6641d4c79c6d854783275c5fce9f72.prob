@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"d:\\CPP\\CPP-Problem-Solving\\958_CF\\E.cpp","tests":[{"id":1721055515981,"input":"4\n1\n1\n3\n3 1 2\n5\n4 2 1 5 3\n8\n8 1 4 6 7 3 5 2\n","output":"0 \n4 7 5 \n19 21 27 17 19 \n79 100 72 68 67 80 73 80 \n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\CPP-Problem-Solving\\958_CF\\E.cpp","group":"local","local":true}

@@ -149,27 +149,17 @@ void MUKU()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    int res = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-        if (!(i % 2))
-            res = max(res, a[i]);
-    }
-    cout << res << endl;
+    (n % 2 == 0 && n > 2) ? yes : no;
 }
 
 int main()
 {
     fastio();
 
-    int t;
-    cin >> t;
-    while (t-- > 0)
-    {
-        MUKU();
-    }
+    // int t;
+    // cin >> t;
+    // while (t--)
+    MUKU();
 
     return 0;
 }
